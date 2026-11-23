@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>カメラ・マイク テスト</title>
+  <link rel="icon" href="data:,">
+  <script>
+    // 初期描画時のテーマちらつき防止
+    (function () {
+      try {
+        var saved = window.localStorage.getItem('web-meeting-test-theme');
+        if (saved === 'light' || saved === 'dark') {
+          document.documentElement.setAttribute('data-theme', saved);
+          return;
+        }
+      } catch (e) {
+        // localStorage 非利用環境は OS 設定にフォールバック
+      }
+      var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      document.documentElement.setAttribute('data-theme', prefersDark ? 'dark' : 'light');
+    })();
+  </script>
+  <link rel="stylesheet" href="./css/pico.min.css">
+  <link rel="stylesheet" href="./css/style.css">
+  <script src="./js/app.js" defer></script>
+</head>
+<body>
+  <header class="container site-header">
+    <h1>カメラ・マイク テスト</h1>
+    <label class="theme-toggle" for="theme-switch">
+      <input type="checkbox" id="theme-switch" role="switch" aria-label="ダークモード切替">
+      <span>ダークモード</span>
+    </label>
+  </header>
+
+  <main class="container">
+    <div id="global-alert" class="global-alert" role="alert" hidden></div>
+
+    <div class="grid test-grid">
+      <!-- カメラテスト -->
+      <article class="test-card">
+        <header>
+          <h2>カメラテスト</h2>
+        </header>
+
+        <div class="action-row">
+          <button type="button" id="camera-toggle-btn">カメラ開始</button>
+          <div class="status-indicator">
+            <span class="status-label">状態</span>
+            <small id="camera-status" class="status-message" role="status" aria-live="polite">カメラ停止</small>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <label for="camera-select">カメラ選択</label>
+          <select id="camera-select">
+            <option value="">カメラ開始後に一覧を取得</option>
+          </select>
+        </div>
+
+        <div id="camera-wrapper" class="video-wrapper">
+          <video id="camera-preview" autoplay playsinline muted></video>
+        </div>
+      </article>
+
+      <!-- マイクテスト -->
+      <article class="test-card">
+        <header>
+          <h2>マイクテスト</h2>
+        </header>
+
+        <div class="action-row">
+          <button type="button" id="mic-toggle-btn">マイク開始</button>
+          <div class="status-indicator">
+            <span class="status-label">状態</span>
+            <small id="mic-status" class="status-message" role="status" aria-live="polite">マイク停止</small>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <label for="mic-select">マイク選択</label>
+          <select id="mic-select">
+            <option value="">マイク開始後に一覧を取得</option>
+          </select>
+        </div>
+
+        <div class="meter-section">
+          <div class="meter-header">
+            <label for="mic-level">入力レベル</label>
+            <small id="mic-level-text">0%</small>
+          </div>
+          <progress id="mic-level" value="0" max="100"></progress>
+        </div>
+
+        <div class="recording-controls">
+          <button type="button" id="record-toggle-btn" class="secondary" disabled>録音開始</button>
+          <span id="recording-timer" class="recording-timer">00:00 / 01:00</span>
+        </div>
+
+        <div class="playback-section">
+          <label for="audio-playback">録音再生</label>
+          <audio id="audio-playback" controls></audio>
+        </div>
+      </article>
+    </div>
+  </main>
+</body>
+</html>

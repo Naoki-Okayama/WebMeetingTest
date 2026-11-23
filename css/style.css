@@ -1,0 +1,176 @@
+/* 補助スタイル: PicoCSS v2 のデフォルト表現を維持しつつ必要最小限を調整 */
+
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-bottom: 0;
+}
+
+.site-header h1 {
+  margin-bottom: 0;
+  font-size: 1.5rem;
+}
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.global-alert {
+  margin-bottom: 1.5rem;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--pico-del-color);
+  border-radius: var(--pico-border-radius);
+  color: var(--pico-del-color);
+}
+
+.test-grid {
+  align-items: start;
+}
+
+.test-card header {
+  margin-bottom: 1rem;
+}
+
+.test-card header h2 {
+  margin-bottom: 0;
+  font-size: 1.25rem;
+}
+
+.control-group {
+  margin-bottom: 1rem;
+}
+
+.action-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.action-row button {
+  width: auto;
+  margin-bottom: 0;
+  flex-shrink: 0;
+}
+
+.status-indicator {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  min-width: 0;
+  flex: 1 1 auto;
+}
+
+.status-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--pico-muted-color);
+  white-space: nowrap;
+}
+
+.video-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  margin-bottom: 0;
+  border: 1px solid var(--pico-muted-border-color);
+  border-radius: var(--pico-border-radius);
+  background-color: #111;
+  overflow: hidden;
+}
+
+.video-wrapper video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.meter-section {
+  margin-bottom: 1rem;
+}
+
+.meter-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 0.25rem;
+}
+
+.meter-section progress {
+  margin-bottom: 0;
+}
+
+.recording-controls {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.recording-controls button {
+  margin-bottom: 0;
+  width: auto;
+  flex: 1 1 auto;
+}
+
+.recording-timer {
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  font-weight: 600;
+}
+
+.playback-section {
+  margin-bottom: 0.75rem;
+}
+
+.playback-section audio {
+  display: block;
+  width: 100%;
+}
+
+.status-message {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 0;
+  padding: 0.2rem 0.65rem;
+  border: 1px solid var(--pico-muted-border-color);
+  border-radius: 0.75rem;
+  background-color: var(--pico-card-sectioning-background-color);
+  color: var(--pico-muted-color);
+  font-size: 0.85rem;
+  line-height: 1.4;
+  max-width: 100%;
+}
+
+.status-message::before {
+  content: "";
+  display: inline-block;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background-color: currentColor;
+  flex-shrink: 0;
+}
+
+.status-message.is-error {
+  border-color: var(--pico-del-color);
+  background-color: color-mix(in srgb, var(--pico-del-color) 12%, transparent);
+  color: var(--pico-del-color);
+}
+
+.status-message.is-active {
+  border-color: var(--pico-ins-color);
+  background-color: color-mix(in srgb, var(--pico-ins-color) 12%, transparent);
+  color: var(--pico-ins-color);
+}
